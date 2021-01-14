@@ -1,4 +1,6 @@
 import os
+import math
+import random
 import requests
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -8,6 +10,19 @@ heroes_data = requests.get("https://api.epicsevendb.com/hero")
 heroes_data_json = heroes_data.json()
 for hero in heroes_data_json["results"]:
     heroes_dict[hero["name"].lower()] = hero["_id"].lower()
+    print()
+
+pool5 = ["ambitious-tywin", "apocalypse-ravi", "arbiter-vildred", "blood-moon-haste", "briar-witch-iseria", "dark-corvus", 
+"desert-jewel-basar", "faithless-lidica", "fallen-cecilia", "maid-chloe", "martial-artist-ken", "operator-sigret", "remnant-violet",
+"ruele-of-light", "sage-baal-sezan", "silver-blade-aramintha", "specter-tenebria", "top-model-luluca"]
+
+pool4 = ["assassin-cartuja", "assassin-cidd", "assassin-coli", "benevolent-romann", "blaze-dingo", "blood-blade-karin", "celestial-mercedes",
+"challenger-dominiel", "champion-zerato", "crescent-moon-rin", "crimson-armin", "fighter-maya", "general-purrgis", "guider-aither", 
+"kitty-clarissa", "roaming-warrior-leo", "shadow-rose", "shooting-star-achates", "sinful-angelica", "tempest-surin", "troublemaker-crozet",
+"wanderer-silk", "watcher-schuri"]
+
+pool3 = ["ainos", "arowell", "batisse", "celeste", "church-of-ilryos-axe", "doris", "eaton", "elson", "gunther", "hurado", "lorina", "mirsa",
+"gloomyrain", "otillie", "pyllis", "requiemroar", "rikoris", "sonia", "sven", "wanda"]
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -131,5 +146,23 @@ async def compare(ctx):
     
     response = "The stat difference for " + hero_name + " is: " + str(percentage) + " percent."
     await ctx.send(response)
+
+@bot.command(name='roll', help=help_c, aliases=["r"])
+async def compare(ctx):
+    print("Summoning hero.")
+
+    rand_num = random.random()
+    hero = None
+    rarity = None
+
+    if rand_num < 0.025:
+        hero = random.choice(pool5)
+    elif rand_num >= 0.025 and rand_num < 0.3:
+        hero = random.choice(pool4)
+    else:
+        hero = random.choice(pool3)
+
+
+
 
 bot.run(TOKEN)
