@@ -161,6 +161,7 @@ async def compare(ctx):
         hero = random.choice(pool4)
     else:
         hero = random.choice(pool3)
+        print("rip")
 
 
 
