@@ -1,8 +1,8 @@
-import os
-import math
 import random
 import requests
+from os import getenv
 from dotenv import load_dotenv
+from discord import Embed
 from discord.ext import commands
 
 heroes_dict = dict()
@@ -25,7 +25,7 @@ pool3 = ["ainos", "arowell", "batisse", "celeste", "church-of-ilryos-axe", "dori
 "gloomyrain", "otillie", "pyllis", "requiemroar", "rikoris", "sonia", "sven", "wanda"]
 
 load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = getenv('DISCORD_TOKEN')
 
 bot = commands.Bot(command_prefix='u!')
 
@@ -157,13 +157,22 @@ async def compare(ctx):
 
     if rand_num < 0.025:
         hero = random.choice(pool5)
+        rarity = 5
     elif rand_num >= 0.025 and rand_num < 0.3:
         hero = random.choice(pool4)
+        rarity = 4
     else:
         hero = random.choice(pool3)
-        print("rip")
+        rarity = 3
+    
+    hero_data = requests.get("https://api.epicsevendb.com/hero/" + hero)
+    hero_data_json = hero_data.json()
+    img = hero_data_json["results"][0]["assets"]["icon"]
+    hero_name = hero_data_json["results"][0]["name"]
 
-
-
+    response = "You have summoned " + str(rarity) + "* hero " + hero_name + "!"
+    embed = Embed()
+    embed.set_image(url=img)
+    await ctx.send(response, embed=embed)
 
 bot.run(TOKEN)
