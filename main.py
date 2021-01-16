@@ -6,7 +6,7 @@ from discord import Embed
 from discord.ext import commands
 
 artifact5_pool = ["a-little-queens-huge-crown", "abyssal-crown", "alabastron", "alencinoxs-wrath", "alexas-basket", "ancient-dragons-legacy",
-"bastion-of-perlutia", "black-hand-of-the-goddess", "bloodseared-moon", "bloodstone", "bloody-rose", "border-coin", "celestine", "circus-fantasia",
+"bastion-of-perlutia", "black-hand-of-the-goddess", "bloodstone", "bloody-rose", "border-coin", "celestine", "circus-fantasia",
 "cradle-of-life", "creation-destruction", "crimson-moon-of-nightmares", "crown-of-glory", "dignus-orb", "doctors-bag", "doubleedged-decrescent",
 "durandal", "dux-noctis", "elbris-ritual-sword", "eticas-scepter", "holy-sacrifice", "idols-cheer", "iron-fan", "justice-for-all", "last-teatime",
 "manica-of-control", "merciless-glutton", "noble-oath", "rhianna-luciella", "rise-of-a-monarch", "rod-of-amaryllis", "samsara-prayer-beads",
@@ -15,7 +15,7 @@ artifact5_pool = ["a-little-queens-huge-crown", "abyssal-crown", "alabastron", "
 "violet-talisman", "wind-rider"]
 
 artifact4_pool = ["adamant-shield", "andres-crossbow", "aurius", "barthezs-orbuculum", "dust-devil", "els-fist", "elyhas-knife", "eternus",
-"hell-cutter", "hilag-lance", "infinity-basket", "kaladra""magarahas-tome", "moonlight-dreamblade", "rosa-hargana", "sashe-ithanes", "sepulcrum",
+"hell-cutter", "hilag-lance", "infinity-basket", "kaladra", "magarahas-tome", "moonlight-dreamblade", "rosa-hargana", "sashe-ithanes", "sepulcrum",
 "silver-rain", "siraren", "steadfast-gatekeeper", "strak-gauntlet", "tagehels-ancient-book", "waters-origin", "wondrous-potion-vial"]
 
 artifact3_pool = ["alsacian-spear", "ancient-sheath", "aqua-rose", "ascending-axe", "atmas-portal", "butterfly-mandolin", "cursed-compass",
@@ -166,7 +166,6 @@ async def on_ready():
 
 @bot.command(name='gear_score', help=help_gs, aliases=["gs"])
 async def gear_score(ctx):
-    print("Calclating gear score.")
     message = ctx.message.content.split()[1:]
 
     if len(message) < 9:
@@ -224,8 +223,6 @@ async def gear_score(ctx):
 
 @bot.command(name='compare', help=help_c, aliases=["c"])
 async def compare(ctx):
-    print("Comparing stat difference.")
-
     message = ctx.message.content.split()[1:]
 
     if len(message) < 4:
@@ -268,8 +265,6 @@ async def compare(ctx):
 
 @bot.command(name='roll', help="Moonlight or covenant summons.", aliases=["r"])
 async def compare(ctx, *args):
-    print("Summoning.")
-    
     if len(args) < 1:
         await ctx.send("Wrong format. Type u!r m or u!r c.")
         return
@@ -289,15 +284,13 @@ async def compare(ctx, *args):
         embed.set_image(url=summon_dict["img"])
         await ctx.send(response, embed=embed)
         return
-        
+
     else:
         await ctx.send("Wrong format. Type u!r m or u!r c.")
 
 
 @bot.command(name='roll-10', help="3* simulator... x10", aliases=["r10"])
 async def compare(ctx, args):
-    print("Summoning 10x.")
-
     if len(args) < 1:
         await ctx.send("Wrong format. Type u!r m or u!r c.")
         return
