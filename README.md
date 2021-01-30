@@ -7,9 +7,9 @@ Link to add the bot to your own Discord server: https://discord.com/oauth2/autho
 
 Bot is only active if my computer is on.
 
-Commands:
+## Commands:
 
-compare | c
+### compare | c
 
 Calculates how much percentage of a stat needed to reach the desired number of that stat.
 
@@ -19,7 +19,7 @@ Example: u!c sage def 1428 1546
 
 Example: u!compare kayron atk 3859 4000
 
-gear_score | gs
+### gear_score | gs
 
 Calculates gear score of the weapon substats for that character. Must put four stats; if only adding relevant stats, use 0 for useless subs.
 
@@ -31,7 +31,7 @@ Example: u!gs arbiter crit 8 cdmg 35 atk% 8 spd 12
 
 Example: u!gear_score magic scholar doris h% 25 h 400 a% 0 er 12
 
-roll | r
+### roll | r
 
 Moonlight or covenant summon.
 
@@ -40,7 +40,7 @@ Example: u!r m
 Example: u!r c
 
 
-roll-10 | r10
+### roll-10 | r10
 
 Moonlight or covenant summon x10
 
