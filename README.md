@@ -2,13 +2,17 @@
 Discord bot for Epic Seven. Can calculate equipment substat score, check how much stats is needed to reach a desired amount,
 and included a simulator for the Moonlight/Covenant summons.
 
+
 Link to add the bot to your own Discord server: https://discord.com/oauth2/authorize?client_id=795393055167348756&scope=bot
+
 Bot is only active if my computer is on.
 
 Commands:
 
+
 compare|c
 Calculates how much percentage of a stat needed to reach the desired number of that stat.
+
 Acceptable stat parameters: hp, def, atk
 Example: u!c sage def 1428 1546
 Example: u!compare kayron atk 3859 4000
