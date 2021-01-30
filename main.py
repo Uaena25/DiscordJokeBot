@@ -35,15 +35,14 @@ async def on_ready():
 
 
 @bot.command(name='gear_score', help=help_gs, aliases=["gs"])
-async def gear_score(ctx):
-    message = ctx.message.content.split()[1:]
+async def gear_score(ctx, *args):
 
-    if len(message) < 9:
+    if len(args) < 9:
         await ctx.send("Wrong format. Use u!help gear_score or u!help gs for examples.")
         return
 
-    hero = " ".join(message[0:-8]).lower()
-    stats = message[-8:]
+    hero = " ".join(args[0:-8]).lower()
+    stats = args[-8:]
     hero_id = None
     hero_name = None
 
@@ -92,15 +91,14 @@ async def gear_score(ctx):
     await ctx.send(response)
 
 @bot.command(name='compare', help=help_c, aliases=["c"])
-async def compare(ctx):
-    message = ctx.message.content.split()[1:]
+async def compare(ctx, *args):
 
-    if len(message) < 4:
+    if len(args) < 4:
         await ctx.send("Wrong format. Use u!help compare or u!help c for examples.")
         return
 
-    hero = " ".join(message[0:-3]).lower()
-    stats = message[-3:]
+    hero = " ".join(args[0:-3]).lower()
+    stats = args[-3:]
     hero_id = None
     hero_name = None
 
@@ -172,7 +170,7 @@ async def compare(ctx, *args):
 
 
 @bot.command(name='roll-10', help="Moonlight or covenant summon x10", aliases=["r10"])
-async def compare(ctx, args):
+async def compare(ctx, *args):
     if len(args) < 1:
         await ctx.send("Wrong format. Type u!r m or u!r c.")
         return
